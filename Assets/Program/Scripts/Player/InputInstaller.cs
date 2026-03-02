@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +7,7 @@ public class InputInstaller : MonoBehaviour
     [SerializeField] private MonoBehaviour _directionChangerBehaviour;
 
     [SerializeField] private InputHandler _inputHandler;
+    [SerializeField] private Movement _movement;
     
     private PlayerInput _playerInput;
 

@@ -15,3 +15,4 @@ public class InputHandler : MonoBehaviour
         _input.ChangeDirection();
     }
 }
+

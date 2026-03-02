@@ -4,5 +4,5 @@ public enum InputType
 {
     Arrows,
     WASD,
-    IA
+    AI
 }
