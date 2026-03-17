@@ -6,6 +6,9 @@ namespace Pong.Ball
 {
     public class BallMovement : MonoBehaviour, IYPositionProvider
     {
+        [SerializeField] private Vector2 _direction;
+        [SerializeField] private Vector2 _speed;
+
         [SerializeField] private float _launchDelayTime;
 
         [SerializeField] private float _startSpeed;
@@ -49,6 +52,9 @@ namespace Pong.Ball
             direction = direction.normalized;
 
             float ballSpeed = _startSpeed + _hitCounter * _extraSpeed;
+
+            _direction = direction;
+            _speed = direction * ballSpeed;
 
             _rb.linearVelocity = direction * ballSpeed;
         }

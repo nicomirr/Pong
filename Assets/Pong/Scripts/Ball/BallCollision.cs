@@ -6,7 +6,6 @@ namespace Pong.Ball
 {
     public class BallCollision : MonoBehaviour
     {
-        [SerializeField] private float _ballMaxAngle;
         [SerializeField] private BounceModifier _bounceModifier;
         [SerializeField] private BallMovement _ballMovement;       
 
@@ -16,13 +15,15 @@ namespace Pong.Ball
 
             if (collision.gameObject.TryGetComponent<PaddleTag>(out _))
             {
-                float paddleCenter = collision.transform.position.y;
+                Vector2 paddlePosition = collision.transform.position;
                 float paddleHalfHeight = collision.collider.bounds.size.y * 0.5f;
                 ContactPoint2D contact = collision.GetContact(0);
 
-                newVelocity = BallBounce.PaddleBounce(contact.point, paddleCenter, paddleHalfHeight, _ballMaxAngle, _ballMovement.PreviousVelocity);
+                newVelocity = BallBounce.PaddleBounce(this.transform.position, paddlePosition, paddleHalfHeight, _bounceModifier.BounceFactor);
 
                 _ballMovement.IncreaseHitCounter();
+
+                
 
                 _ballMovement.MoveBall(newVelocity);
             }
@@ -30,8 +31,13 @@ namespace Pong.Ball
             {
                 ContactPoint2D contact = collision.GetContact(0);
 
+                //collision.relativeVelocity?
                 newVelocity = BallBounce.WallBounce(_ballMovement.PreviousVelocity, contact.normal);
+
+                transform.position = (Vector2)transform.position + contact.normal * 0.02f;
+
                 _ballMovement.MoveBall(newVelocity);
+
             }
         }
     }

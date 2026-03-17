@@ -14,43 +14,19 @@ namespace Pong.Ball
             return reflectedVelocity;
         }
 
-        public static Vector2 PaddleBounce(Vector2 hitPoint, float paddleCenterY, float paddleHalfHeight,
-            float maxBounceAngle, Vector2 previousVelocity)
+        public static Vector2 PaddleBounce(Vector2 ballPosition, Vector2 paddlePosition, float paddleHalfHeight, float _bounceFactor)
         {
-            float relative = (hitPoint.y - paddleCenterY) / paddleHalfHeight;
-            relative = Mathf.Clamp(relative, -1f, 1f);
+            float speedX = ballPosition.x < paddlePosition.x ? -1 : 1; 
+            float speedY = (ballPosition.y - paddlePosition.y) / paddleHalfHeight; 
+            speedY *= _bounceFactor; 
 
-            float angle = relative * maxBounceAngle * Mathf.Deg2Rad;
+            speedY = Mathf.Clamp(speedY, -_bounceFactor, _bounceFactor); 
 
-            float dirX = GetHorizontalDirection(previousVelocity.x);
-
-            float x = dirX * Mathf.Cos(angle);
-            float y = Mathf.Sin(angle);
-
-            y = ApplyMinimumVertical(y, relative, 0.2f);
-
-            return new Vector2(x, y).normalized;
+            if (Mathf.Abs(speedY) < 0.1f) 
+                speedY = speedY < 0 ? -0.2f : 0.2f; 
+            
+            return new Vector2(speedX, speedY);
         }
-
-        private static float GetHorizontalDirection(float previousVelocityX)
-        {
-            if (Mathf.Approximately(previousVelocityX, 0f))
-                return 1f;
-
-            return -Mathf.Sign(previousVelocityX);
-        }
-
-        private static float ApplyMinimumVertical(float y, float relative, float minY)
-        {
-            if (Mathf.Abs(y) >= minY)
-                return y;
-
-            float sign = relative == 0f ? 1f : Mathf.Sign(relative);
-            return minY * sign;
-        }
-
-        
-
     }
 }
 
