@@ -5,25 +5,25 @@ namespace Pong.Mobility
     public class ViewportCheckLimits : ICheckLimits
     {
         private readonly ViewportLimits _viewportLimits;
-        private readonly Transform _transform;
+        
         private readonly Camera _camera;
 
-        public ViewportCheckLimits(Transform transform, Camera camera, ViewportLimits viewportLimits)
+        public ViewportCheckLimits(Camera camera, ViewportLimits viewportLimits)
         {
-            _transform = transform;
             _camera = camera;
             _viewportLimits = viewportLimits;
         }
 
-        public void ClampFinalPosition()
+        public Vector2 ClampFinalPosition(Vector2 position)
         {
-            Vector3 viewportPointPosition = _camera.WorldToViewportPoint(_transform.position);
+            Vector3 viewportPointPosition = _camera.WorldToViewportPoint(position);
 
             viewportPointPosition.y = Mathf.Clamp(viewportPointPosition.y,
                 _viewportLimits.MinY, _viewportLimits.MaxY);
 
-            _transform.position = _camera.ViewportToWorldPoint(viewportPointPosition);
+            return _camera.ViewportToWorldPoint(viewportPointPosition);
         }
+
     }
 }
 

@@ -1,7 +1,9 @@
+using UnityEngine;
+
 namespace Pong.Mobility
 {
     public interface ICheckLimits
     {
-        public void ClampFinalPosition();
+        public Vector2 ClampFinalPosition(Vector2 position);
     }
 }

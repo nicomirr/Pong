@@ -93,7 +93,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ""id"": ""3d9d3598-daff-49f7-9406-d176d0905100"",
             ""actions"": [
                 {
-                    ""name"": ""Movement"",
+                    ""name"": ""PaddleMovement"",
                     ""type"": ""Button"",
                     ""id"": ""d8476c0b-cdec-4da3-a438-4964eb3dd927"",
                     ""expectedControlType"": """",
@@ -110,7 +110,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""PaddleMovement"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -121,7 +121,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""PaddleMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -132,7 +132,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""PaddleMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -143,7 +143,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ""id"": ""4908d8cc-38a4-45f9-90e0-ddb3e1b173a1"",
             ""actions"": [
                 {
-                    ""name"": ""Movement"",
+                    ""name"": ""PaddleMovement"",
                     ""type"": ""Button"",
                     ""id"": ""5acafd9c-4d08-4a67-be83-ad37afff6354"",
                     ""expectedControlType"": """",
@@ -160,7 +160,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""PaddleMovement"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -171,7 +171,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""PaddleMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -182,7 +182,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""PaddleMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -193,10 +193,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
 }");
         // PlayerA
         m_PlayerA = asset.FindActionMap("PlayerA", throwIfNotFound: true);
-        m_PlayerA_Movement = m_PlayerA.FindAction("Movement", throwIfNotFound: true);
+        m_PlayerA_Movement = m_PlayerA.FindAction("PaddleMovement", throwIfNotFound: true);
         // PlayerB
         m_PlayerB = asset.FindActionMap("PlayerB", throwIfNotFound: true);
-        m_PlayerB_Movement = m_PlayerB.FindAction("Movement", throwIfNotFound: true);
+        m_PlayerB_Movement = m_PlayerB.FindAction("PaddleMovement", throwIfNotFound: true);
     }
 
     ~@PlayerInput()

@@ -1,15 +1,14 @@
-using Pong.Mobility;
-using System.Collections;
 using UnityEngine;
+using Pong.Mobility;
+using Pong.Game;
 
 namespace Pong.Ball
 {
-    public class BallMovement : MonoBehaviour, IYPositionProvider
+    public class BallMovement : MonoBehaviour, IYPositionProvider, ILaunchable
     {
         [SerializeField] private Vector2 _direction;
-        [SerializeField] private Vector2 _speed;
-
-        [SerializeField] private float _launchDelayTime;
+        [SerializeField] private Vector2 _directionNormalized;
+        [SerializeField] private Vector2 _velocity;
 
         [SerializeField] private float _startSpeed;
         [SerializeField] private float _extraSpeed;
@@ -29,10 +28,19 @@ namespace Pong.Ball
             _rb = GetComponent<Rigidbody2D>();
         }
 
+        private void OnEnable()
+        {
+            GameEvents.ResetBall += StopBall;
+        }
+
+        private void OnDisable()
+        {
+            GameEvents.ResetBall -= StopBall;
+        }
+
         private void Start()
         {
             _hitCounter = 0;
-            StartCoroutine(Launch());
         }
 
         void FixedUpdate()
@@ -40,22 +48,26 @@ namespace Pong.Ball
             _previousVelocity = _rb.linearVelocity;
         }
 
-        private IEnumerator Launch()
+        public void Launch(Vector2 direction)
         {
-            yield return new WaitForSeconds(_launchDelayTime);
+            MoveBall(direction);
+        }
 
-            MoveBall(new Vector2(-1, 0));
+        private void StopBall()
+        {
+            _rb.linearVelocity = Vector2.zero;
         }
 
         public void MoveBall(Vector2 direction)
         {
+            _direction = direction;
+
             direction = direction.normalized;
 
             float ballSpeed = _startSpeed + _hitCounter * _extraSpeed;
 
-            _direction = direction;
-            _speed = direction * ballSpeed;
-
+            _directionNormalized = direction;
+            _velocity = direction * ballSpeed;
             _rb.linearVelocity = direction * ballSpeed;
         }
 
@@ -65,8 +77,10 @@ namespace Pong.Ball
 
             _hitCounter++;
         }
-
     }
 }
+
+
+
 
 
