@@ -1,33 +1,41 @@
 using UnityEngine;
-using Pong.Mobility;
+using Pong.Paddle.Mobility;
 using Pong.Game;
+using Pong.Difficulty;
 
 namespace Pong.Ball
 {
-    public class BallMovement : MonoBehaviour, IYPositionProvider, ILaunchable
+    public class BallMovement : MonoBehaviour, IYPositionProvider, ILaunchable, IBallDifficultyConfigurator
     {
         [SerializeField] private Vector2 _direction;
         [SerializeField] private Vector2 _directionNormalized;
         [SerializeField] private Vector2 _velocity;
-
-        [SerializeField] private float _startSpeed;
-        [SerializeField] private float _extraSpeed;
-        [SerializeField] private float _maxExtraSpeed;
 
         private Rigidbody2D _rb;
 
         private Vector2 _previousVelocity;
         public Vector2 PreviousVelocity => _previousVelocity;
 
+        [SerializeField] private float _startSpeed;
+        [SerializeField] private float _extraSpeed;
+        [SerializeField] private float _maxExtraSpeed;
+
         public float YPosition => this.transform.position.y;
 
         private int _hitCounter;
+
+        public void ApplyBallDifficultyConfig(DifficultyConfig config)
+        {
+            _startSpeed = config.BallStartSpeed;
+            _extraSpeed = config.BallExtraSpeed;
+            _maxExtraSpeed = config.BallMaxExtraSpeed;
+        }
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
         }
-
+        
         private void OnEnable()
         {
             GameEvents.ResetBall += StopBall;
@@ -37,7 +45,7 @@ namespace Pong.Ball
         {
             GameEvents.ResetBall -= StopBall;
         }
-
+                
         private void Start()
         {
             _hitCounter = 0;
@@ -76,7 +84,7 @@ namespace Pong.Ball
             if (_hitCounter * _extraSpeed >= _maxExtraSpeed) return;
 
             _hitCounter++;
-        }
+        }        
     }
 }
 

@@ -1,7 +1,9 @@
+using Pong.Game;
 using Pong.Input.AI;
 using Pong.Input.Player;
-using Pong.Mobility;
-using Pong.Spatial;
+using Pong.Paddle;
+using Pong.Paddle.Mobility;
+using Pong.Paddle.Spatial;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,17 +11,17 @@ namespace Pong.Input
 {
     public class InputInstaller : MonoBehaviour
     {
+
         [Header("General")]
-        [SerializeField] private InputType _inputType;
+        [SerializeField] private PaddleSide _paddleSide;
         [SerializeField] private MonoBehaviour _movementMonobehaviour;
         [SerializeField] private InputHandler _inputHandler;
-
 
         [Header("IA")]
         [SerializeField] private MonoBehaviour _ballMovementMonobehaviour;
         [SerializeField] private MonoBehaviour _paddleBoundsProviderMonobehaviour;
       
-        private PlayerInput _playerInput;
+        private GameInput _gameInput;
 
         private void Awake()
         {
@@ -32,30 +34,34 @@ namespace Pong.Input
             var paddleYPosProvider = _movementMonobehaviour as IYPositionProvider;
             var ballYPosProvider = _ballMovementMonobehaviour as IYPositionProvider;
             var paddleBoundsProvider = _paddleBoundsProviderMonobehaviour as IPaddleBoundsProvider;
+            var rightPaddleMode = GameSession.PaddleMode;
 
-            switch (_inputType)
+            switch (_paddleSide)
             {
-                case InputType.Arrows:
+                case PaddleSide.Left:
                     {
-                        _playerInput = new PlayerInput();
-                        _playerInput.Enable();
+                        _gameInput = new GameInput();
+                        _gameInput.Enable();
                     
-                        InputAction movement = _playerInput.PlayerA.Movement;
+                        InputAction movement = _gameInput.PlayerA.Movement;
                         return new PlayerInputAdapter(directionChanger, movement);
                     }
-                case InputType.WASD:
+                case PaddleSide.Right:
                     {
-                        _playerInput = new PlayerInput();
-                        _playerInput.Enable();
+                        _gameInput = new GameInput();
+                        _gameInput.Enable();
                     
-                        InputAction movement = _playerInput.PlayerB.Movement;
-                        return new PlayerInputAdapter(directionChanger, movement);
-                    }
-                case InputType.AI:
-                default:
-                    {                                      
+                        if(rightPaddleMode == RightPaddleMode.WASD)
+                        {
+                            InputAction movement = _gameInput.PlayerB.Movement;
+                            return new PlayerInputAdapter(directionChanger, movement);
+                        }
+
                         return new AIInputAdapter(directionChanger, ballYPosProvider, paddleYPosProvider, paddleBoundsProvider);
                     }
+                default:                    
+                        throw new System.ArgumentOutOfRangeException(nameof(_paddleSide), _paddleSide, null);
+                    
 
             }
         }

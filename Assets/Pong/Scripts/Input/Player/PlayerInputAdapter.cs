@@ -1,7 +1,7 @@
 using System;
 using UnityEngine.InputSystem;
 
-using Pong.Mobility;
+using Pong.Paddle.Mobility;
 
 namespace Pong.Input.Player
 {

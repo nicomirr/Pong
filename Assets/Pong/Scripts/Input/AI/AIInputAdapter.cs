@@ -1,5 +1,5 @@
-using Pong.Mobility;
-using Pong.Spatial;
+using Pong.Paddle.Mobility;
+using Pong.Paddle.Spatial;
 
 namespace Pong.Input.AI
 {
