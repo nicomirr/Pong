@@ -1,2 +1,2 @@
-# Pong_20_Games_Challenge
+# 20 Games Challenge: Pong
 
