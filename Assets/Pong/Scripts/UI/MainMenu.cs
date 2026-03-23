@@ -1,81 +1,117 @@
 using Pong.Game;
 using Pong.Input;
 using Pong.Difficulty;
+using Pong.Scene;
+using Pong.Audio;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Pong.UI
 {
     public class MainMenu : MonoBehaviour
-    {
+    {        
         [SerializeField] private GameObject _initialButtons;
+        [SerializeField] private GameObject _optionsButton;
         [SerializeField] private GameObject _gameSelectionButtons;
-        [SerializeField] private GameObject _speedSelectionButtons;
-        [SerializeField] private GameObject _difficultySelectionButtons;
-
+        [SerializeField] private GameObject _difficultySelectionButtonsPlayers;
+        [SerializeField] private GameObject _difficultySelectionButtonsAI;
+                
         private void Start()
         {
+            InitialConfig();
+        }
+
+        private void InitialConfig()
+        {
             _initialButtons.SetActive(true);
-        }
-
-        public void PlayButtonPressed()
-        {
-            _initialButtons.SetActive(false);
-            _gameSelectionButtons.SetActive(true);
-        }
-
-        public void Player1Vs2ButtonPressed()
-        {
-            GameSession.SetRightPaddleMode(RightPaddleMode.WASD);
-
+            _optionsButton.SetActive(false);
             _gameSelectionButtons.SetActive(false);
-            _speedSelectionButtons.SetActive(true);
-        }
-
-        public void PlayerVsAIButtonPressed()
-        {
-            GameSession.SetRightPaddleMode(RightPaddleMode.AI);
-
-            _gameSelectionButtons.SetActive(false);
-            _difficultySelectionButtons.SetActive(true);
-        }
-
-        public void EasyButtonPressed()
-        {
-            GameSession.SetDifficultyLevel(DifficultyLevel.Easy);
-            SceneManager.LoadScene(1);
-        }
-
-        public void NormalButtonPressed()
-        {
-            GameSession.SetDifficultyLevel(DifficultyLevel.Normal);
-            SceneManager.LoadScene(1);
-        }
-
-        public void HardButtonPressed()
-        {
-            GameSession.SetDifficultyLevel(DifficultyLevel.Hard);
-            SceneManager.LoadScene(1);
-        }
-
-        public void BackToGameSelectionPressed()
-        {
-            _speedSelectionButtons.SetActive(false);
-            _difficultySelectionButtons.SetActive(false);
-            _gameSelectionButtons.SetActive(true);
-        }
-
-        public void BackToInitialPressed()
-        {
-            _gameSelectionButtons.SetActive(false);
-            _initialButtons.SetActive(true);
-        }
-
+            _difficultySelectionButtonsPlayers.SetActive(false);
+            _difficultySelectionButtonsAI.SetActive(false);
+        }   
         
+        public void PlayPressed()
+        {
+            SwitchMenu(_initialButtons, _gameSelectionButtons);
+        }
+
+        public void OptionsPressed()
+        {
+            SwitchMenu(_initialButtons, _optionsButton);
+        }
+
+        public void SelectAIPressed()
+        {
+            SelectGameType(RightPaddleMode.AI);
+            SwitchMenu(_gameSelectionButtons, _difficultySelectionButtonsAI);
+        }
+
+        public void SelectPlayersPressed()
+        {
+            SelectGameType(RightPaddleMode.Arrows);
+            SwitchMenu(_gameSelectionButtons, _difficultySelectionButtonsPlayers);
+        }
+
+        public void BackFromOptionsPressed()
+        {
+            SwitchMenu(_optionsButton, _initialButtons);    
+        }
+
+        public void BackFromGameSelectionPressed()
+        {
+            SwitchMenu(_gameSelectionButtons, _initialButtons);
+        }
+
+        public void BackFromAIDifficultyPressed()
+        {
+            SwitchMenu(_difficultySelectionButtonsAI, _gameSelectionButtons);           
+        }
+
+        public void BackFromPlayersDifficultyPressed()
+        {
+            SwitchMenu(_difficultySelectionButtonsPlayers, _gameSelectionButtons);
+        }
+
+        private void SwitchMenu(GameObject oldButtons, GameObject newButtons)
+        {
+            AudioEvents.RaisePlaySFX(SFXType.UI_Click);
+
+            oldButtons.SetActive(false);
+            newButtons.SetActive(true);
+        }
+
+        private void SelectGameType(RightPaddleMode mode)
+        {
+            GameSession.SetRightPaddleMode(mode);
+        }
+
+        public void SelectEasy()
+        {
+            SelectDifficulty(DifficultyLevel.Easy);
+        }
+
+        public void SelectNormal()
+        {
+            SelectDifficulty(DifficultyLevel.Normal);
+        }
+
+        public void SelectHard()
+        {
+            SelectDifficulty(DifficultyLevel.Hard);
+        }        
+
+        private void SelectDifficulty(DifficultyLevel difficultyLevel)
+        {
+            GameSession.SetDifficultyLevel(difficultyLevel);
+            StartGame();
+        }      
+    
+        private void StartGame()
+        {
+            SceneManager.LoadScene((int)SceneName.Game);
+        }        
     }
 }
 
 
-//QUEDA RESOLVER LA DIFICULTAD. A PARTIR DE DIFICULTAD SELECCIONADA SE SETEA EN GAMESESSION
-//DESDE GAMESESSION VA A PARAR A UN INSTALLER DE DIFICULTAD. VAMOS A INYECTAR LA VELOCIDAD A LAS PALETAS Y A LA PELOTA
-//HAY QUE HACER UNA ESTRUCTURA QUE CONTENGA LAS VELOCIDADES, O QUIZAS UN SCRIPTABLE OBJECT POR CADA DIFICULTAD.
+

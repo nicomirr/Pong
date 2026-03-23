@@ -1,60 +1,93 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using Pong.Game;
 
-public class PauseManager : MonoBehaviour
+namespace Pong.UI
 {
-    [SerializeField] private GameObject _pauseLayer;
-
-    private GameInput _gameInput;
-    private bool _isGamePaused;
-
-    private void Awake()
+    public class PauseManager : MonoBehaviour, IGameplayController
     {
-        _gameInput = new GameInput();
-    }
+        [SerializeField] private GameObject _pauseLayer;
 
-    private void Start()
-    {
-        _isGamePaused = false;
-    }
+        private GameInput _gameInput;
+        private bool _isGamePaused;
 
-    private void OnEnable()
-    {
-        _gameInput.UI.Enable();
+        private bool _canPause;
 
-        _gameInput.UI.Pause.performed += OnPauseButtonPressed;
-    }
-
-    private void OnDisable()
-    {
-        _gameInput.UI.Pause.performed -= OnPauseButtonPressed;
-
-        _gameInput.UI.Disable();
-    }
-
-    private void OnPauseButtonPressed(InputAction.CallbackContext ctx)
-    {
-        if(_isGamePaused)
+        private void Awake()
         {
-            ResumeGame();
-            return;
+            _gameInput = new GameInput();
         }
 
-        PauseGame();
-    }
+        public void EnableGameplay()
+        {
+            _canPause = true;
+        }
 
-    private void PauseGame()
-    {
-        _pauseLayer.SetActive(true);
-        _isGamePaused = true;
-        Time.timeScale = 0;
-    }
+        public void DisableGameplay()
+        {
+            ResumeGame();
+            _canPause = false;
+        }
 
-    private void ResumeGame()
-    {
-        _pauseLayer.SetActive(false);
-        _isGamePaused = false;
-        Time.timeScale = 1;
-    }
+        private void OnEnable()
+        {
+            _gameInput.UI.Enable();
 
+            _gameInput.UI.Pause.performed += OnPauseButtonPressed;
+        }
+
+        private void OnDisable()
+        {
+            _gameInput.UI.Pause.performed -= OnPauseButtonPressed;
+
+            _gameInput.UI.Disable();
+        }
+
+        private void Start()
+        {
+            _isGamePaused = false;
+        }
+               
+        private void OnPauseButtonPressed(InputAction.CallbackContext ctx)
+        {
+            if (!_canPause) return;
+
+            if (_isGamePaused)
+            {
+                ResumeGame();
+                return;
+            }
+
+            PauseGame();
+        }
+
+        private void PauseGame()
+        {
+            _gameInput.UI.ToMainMenu.performed += OnToMainMenuButtonPressed;
+
+            _pauseLayer.SetActive(true);
+            _isGamePaused = true;
+            Time.timeScale = 0;
+        }
+
+        private void ResumeGame()
+        {
+            _gameInput.UI.ToMainMenu.performed -= OnToMainMenuButtonPressed;
+
+            _pauseLayer.SetActive(false);
+            _isGamePaused = false;
+            Time.timeScale = 1;
+        }
+
+        private void OnToMainMenuButtonPressed(InputAction.CallbackContext ctx)
+        {
+            Time.timeScale = 1;
+            _gameInput.UI.ToMainMenu.performed -= OnToMainMenuButtonPressed;
+            SceneManager.LoadScene(0);
+        }
+        
+    }
 }
+
+

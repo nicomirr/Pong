@@ -2,12 +2,11 @@ using UnityEngine;
 using System.Collections;
 using Pong.Game;
 
-public class BallLauncher : MonoBehaviour
+public class BallLauncher : MonoBehaviour, IGameplayController
 {
     [SerializeField] private Vector2 _initialBallPos;
     [SerializeField] private Rigidbody2D _ballRb;
 
-    [SerializeField] private float _ballResetDelay;
     [SerializeField] private float _launchDelay;
     
     [SerializeField] private float _minYDir;
@@ -16,36 +15,37 @@ public class BallLauncher : MonoBehaviour
     [SerializeField] private MonoBehaviour _launchableMonobehaviour;
     private ILaunchable _launchable;
 
+    private bool _canLaunch;
+
     private void Awake()
     {
         _launchable = _launchableMonobehaviour as ILaunchable;
     }
 
-    private void OnEnable()
+    public void EnableGameplay()
     {
-        GameEvents.ResetBall += BeginLaunch;
+        _canLaunch = true;
     }
 
-    private void OnDisable()
+    public void DisableGameplay()
     {
-        GameEvents.ResetBall -= BeginLaunch;
+        _canLaunch = false;
     }
-
+        
     private void Start()
-    {
-        //cambiar luego
-        BeginLaunch();
-    }
+    {        
+        Launch();
+    }    
 
-    public void BeginLaunch()
+    public void Launch()
     {
+        if (!_canLaunch) return;
+
         StartCoroutine(LaunchRoutine());
     }
 
     private IEnumerator LaunchRoutine()
-    {
-        yield return new WaitForSeconds(_ballResetDelay);
-
+    {        
         _ballRb.position = _initialBallPos;
 
         yield return new WaitForSeconds(_launchDelay);
@@ -59,4 +59,6 @@ public class BallLauncher : MonoBehaviour
 
         _launchable.Launch(launchDirection);
     }
+
+    
 }

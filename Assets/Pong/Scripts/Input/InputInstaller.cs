@@ -43,7 +43,7 @@ namespace Pong.Input
                         _gameInput = new GameInput();
                         _gameInput.Enable();
                     
-                        InputAction movement = _gameInput.PlayerA.Movement;
+                        InputAction movement = _gameInput.PaddleLeft.Movement;
                         return new PlayerInputAdapter(directionChanger, movement);
                     }
                 case PaddleSide.Right:
@@ -51,9 +51,9 @@ namespace Pong.Input
                         _gameInput = new GameInput();
                         _gameInput.Enable();
                     
-                        if(rightPaddleMode == RightPaddleMode.WASD)
+                        if(rightPaddleMode == RightPaddleMode.Arrows)
                         {
-                            InputAction movement = _gameInput.PlayerB.Movement;
+                            InputAction movement = _gameInput.PaddleRight.Movement;
                             return new PlayerInputAdapter(directionChanger, movement);
                         }
 
@@ -64,6 +64,11 @@ namespace Pong.Input
                     
 
             }
+        }
+
+        private void OnDisable()
+        {
+            _gameInput.Disable();
         }
     }
 }

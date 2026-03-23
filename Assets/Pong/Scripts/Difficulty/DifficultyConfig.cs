@@ -20,8 +20,8 @@ namespace Pong.Difficulty
         [SerializeField] private float _ballExtraSpeed;
         public float BallExtraSpeed => _ballExtraSpeed;
 
-        [SerializeField] private float _ballMaxExtraSpeed;
-        public float BallMaxExtraSpeed => _ballMaxExtraSpeed;
+        [SerializeField] private float _ballMaxSpeed;
+        public float BallMaxSpeed => _ballMaxSpeed;
 
     }
 }

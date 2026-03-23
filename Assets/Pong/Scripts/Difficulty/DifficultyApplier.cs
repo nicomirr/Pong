@@ -42,7 +42,7 @@ namespace Pong.Difficulty
         }
         private float GetRightPaddleSpeed(DifficultyConfig config)
         {
-            return GameSession.PaddleMode == RightPaddleMode.WASD
+            return GameSession.PaddleMode == RightPaddleMode.Arrows
                 ? config.PlayerSpeed
                 : config.AISpeed;
         }

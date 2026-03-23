@@ -1,5 +1,4 @@
 using System;
-using Pong.Score;
 
 namespace Pong.Game
 {

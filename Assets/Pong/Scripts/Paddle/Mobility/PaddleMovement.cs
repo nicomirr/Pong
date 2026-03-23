@@ -1,11 +1,11 @@
 using UnityEngine;
 
-using Pong.Paddle;
 using Pong.Difficulty;
+using Pong.Game;
 
 namespace Pong.Paddle.Mobility
 {
-    public class PaddleMovement : MonoBehaviour, IDirectionChanger, IYPositionProvider, IPaddleDifficultyConfigurator
+    public class PaddleMovement : MonoBehaviour, IDirectionChanger, IYPositionProvider, IPaddleDifficultyConfigurator, IGameplayController
     {
         [SerializeField] private float _speed;
         
@@ -16,11 +16,22 @@ namespace Pong.Paddle.Mobility
 
         public float YPosition => this.transform.position.y;
 
+        private bool _canMove;
         
         public void Init(Rigidbody2D rb, ICheckLimits checkLimits)
         {
             _rb = rb;
             _checkLimits = checkLimits;
+        }
+
+        public void EnableGameplay()
+        {
+            _canMove = true;
+        }
+
+        public void DisableGameplay()
+        {
+            _canMove = false;
         }
 
         public void ApplyPaddleDifficultyConfig(float speed)
@@ -35,6 +46,8 @@ namespace Pong.Paddle.Mobility
 
         private void FixedUpdate()
         {
+            if (!_canMove) return;
+
             Vector2 targetPosition = _rb.position + _moveDirection * (_speed * Time.fixedDeltaTime);
             targetPosition = _checkLimits.ClampFinalPosition(targetPosition);
 

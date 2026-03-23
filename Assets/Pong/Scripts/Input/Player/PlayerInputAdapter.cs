@@ -29,7 +29,7 @@ namespace Pong.Input.Player
             _movement.performed -= OnMovementPerformed;
             _movement.canceled -= OnMovementCanceled;
 
-            _movement.Disable();
+            _movement.Disable();                        
         }
     
         private void OnMovementPerformed(InputAction.CallbackContext ctx)

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Normal
   m_EditorClassIdentifier: Assembly-CSharp::Pong.Difficulty.DifficultyConfig
   _playerSpeed: 12
-  _aiSpeed: 11.6
-  _ballStartSpeed: 14.5
-  _ballExtraSpeed: 0
-  _ballMaxExtraSpeed: 0
+  _aiSpeed: 10.7
+  _ballStartSpeed: 12
+  _ballExtraSpeed: 0.5
+  _ballMaxSpeed: 15

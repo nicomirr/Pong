@@ -3,57 +3,7 @@
     "name": "GameInput",
     "maps": [
         {
-            "name": "PlayerA",
-            "id": "3d9d3598-daff-49f7-9406-d176d0905100",
-            "actions": [
-                {
-                    "name": "Movement",
-                    "type": "Button",
-                    "id": "d8476c0b-cdec-4da3-a438-4964eb3dd927",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "1D Axis",
-                    "id": "c072c6cc-d312-480b-a124-89d8470fa652",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "edb4c43a-9b5f-4a30-b2ac-c88cd66bdfc8",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "2171e6fa-af41-4fef-8e02-311eb4eeb4f4",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                }
-            ]
-        },
-        {
-            "name": "PlayerB",
+            "name": "PaddleLeft",
             "id": "4908d8cc-38a4-45f9-90e0-ddb3e1b173a1",
             "actions": [
                 {
@@ -103,6 +53,56 @@
             ]
         },
         {
+            "name": "PaddleRight",
+            "id": "3d9d3598-daff-49f7-9406-d176d0905100",
+            "actions": [
+                {
+                    "name": "Movement",
+                    "type": "Button",
+                    "id": "d8476c0b-cdec-4da3-a438-4964eb3dd927",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis",
+                    "id": "c072c6cc-d312-480b-a124-89d8470fa652",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "edb4c43a-9b5f-4a30-b2ac-c88cd66bdfc8",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "2171e6fa-af41-4fef-8e02-311eb4eeb4f4",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        },
+        {
             "name": "UI",
             "id": "48ce7bf3-68bd-41bc-add1-9d48fac17b8e",
             "actions": [
@@ -110,6 +110,15 @@
                     "name": "Pause",
                     "type": "Button",
                     "id": "dceb7e29-3306-481a-b0b3-509fd3a8fcc9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ToMainMenu",
+                    "type": "Button",
+                    "id": "c03294f0-43f3-4d06-a53e-ff23caf1bdba",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -125,6 +134,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "519e86d7-b0f8-4597-8f8c-69b9d91b2a57",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToMainMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

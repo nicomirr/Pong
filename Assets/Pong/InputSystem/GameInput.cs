@@ -89,62 +89,12 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     ""name"": ""GameInput"",
     ""maps"": [
         {
-            ""name"": ""PlayerA"",
-            ""id"": ""3d9d3598-daff-49f7-9406-d176d0905100"",
-            ""actions"": [
-                {
-                    ""name"": ""Movement"",
-                    ""type"": ""Button"",
-                    ""id"": ""d8476c0b-cdec-4da3-a438-4964eb3dd927"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""c072c6cc-d312-480b-a124-89d8470fa652"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""edb4c43a-9b5f-4a30-b2ac-c88cd66bdfc8"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""2171e6fa-af41-4fef-8e02-311eb4eeb4f4"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                }
-            ]
-        },
-        {
-            ""name"": ""PlayerB"",
+            ""name"": ""PaddleLeft"",
             ""id"": ""4908d8cc-38a4-45f9-90e0-ddb3e1b173a1"",
             ""actions"": [
                 {
                     ""name"": ""Movement"",
-                    ""type"": ""Button"",
+                    ""_type"": ""Button"",
                     ""id"": ""5acafd9c-4d08-4a67-be83-ad37afff6354"",
                     ""expectedControlType"": """",
                     ""processors"": """",
@@ -189,13 +139,72 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             ]
         },
         {
+            ""name"": ""PaddleRight"",
+            ""id"": ""3d9d3598-daff-49f7-9406-d176d0905100"",
+            ""actions"": [
+                {
+                    ""name"": ""Movement"",
+                    ""_type"": ""Button"",
+                    ""id"": ""d8476c0b-cdec-4da3-a438-4964eb3dd927"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""c072c6cc-d312-480b-a124-89d8470fa652"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""edb4c43a-9b5f-4a30-b2ac-c88cd66bdfc8"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""2171e6fa-af41-4fef-8e02-311eb4eeb4f4"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
+        },
+        {
             ""name"": ""UI"",
             ""id"": ""48ce7bf3-68bd-41bc-add1-9d48fac17b8e"",
             ""actions"": [
                 {
                     ""name"": ""Pause"",
-                    ""type"": ""Button"",
+                    ""_type"": ""Button"",
                     ""id"": ""dceb7e29-3306-481a-b0b3-509fd3a8fcc9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OnToMainMenuButtonPressed"",
+                    ""_type"": ""Button"",
+                    ""id"": ""c03294f0-43f3-4d06-a53e-ff23caf1bdba"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -213,27 +222,39 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""519e86d7-b0f8-4597-8f8c-69b9d91b2a57"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OnToMainMenuButtonPressed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // PlayerA
-        m_PlayerA = asset.FindActionMap("PlayerA", throwIfNotFound: true);
-        m_PlayerA_Movement = m_PlayerA.FindAction("Movement", throwIfNotFound: true);
-        // PlayerB
-        m_PlayerB = asset.FindActionMap("PlayerB", throwIfNotFound: true);
-        m_PlayerB_Movement = m_PlayerB.FindAction("Movement", throwIfNotFound: true);
+        // PaddleLeft
+        m_PaddleLeft = asset.FindActionMap("PaddleLeft", throwIfNotFound: true);
+        m_PaddleLeft_Movement = m_PaddleLeft.FindAction("Movement", throwIfNotFound: true);
+        // PaddleRight
+        m_PaddleRight = asset.FindActionMap("PaddleRight", throwIfNotFound: true);
+        m_PaddleRight_Movement = m_PaddleRight.FindAction("Movement", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
+        m_UI_ToMainMenu = m_UI.FindAction("OnToMainMenuButtonPressed", throwIfNotFound: true);
     }
 
     ~@GameInput()
     {
-        UnityEngine.Debug.Assert(!m_PlayerA.enabled, "This will cause a leak and performance issues, GameInput.PlayerA.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_PlayerB.enabled, "This will cause a leak and performance issues, GameInput.PlayerB.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_PaddleLeft.enabled, "This will cause a leak and performance issues, GameInput.PaddleLeft.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_PaddleRight.enabled, "This will cause a leak and performance issues, GameInput.PaddleRight.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, GameInput.UI.Disable() has not been called.");
     }
 
@@ -307,29 +328,29 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // PlayerA
-    private readonly InputActionMap m_PlayerA;
-    private List<IPlayerAActions> m_PlayerAActionsCallbackInterfaces = new List<IPlayerAActions>();
-    private readonly InputAction m_PlayerA_Movement;
+    // PaddleLeft
+    private readonly InputActionMap m_PaddleLeft;
+    private List<IPaddleLeftActions> m_PaddleLeftActionsCallbackInterfaces = new List<IPaddleLeftActions>();
+    private readonly InputAction m_PaddleLeft_Movement;
     /// <summary>
-    /// Provides access to input actions defined in input action map "PlayerA".
+    /// Provides access to input actions defined in input action map "PaddleLeft".
     /// </summary>
-    public struct PlayerAActions
+    public struct PaddleLeftActions
     {
         private @GameInput m_Wrapper;
 
         /// <summary>
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
-        public PlayerAActions(@GameInput wrapper) { m_Wrapper = wrapper; }
+        public PaddleLeftActions(@GameInput wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "PlayerA/Movement".
+        /// Provides access to the underlying input action "PaddleLeft/Movement".
         /// </summary>
-        public InputAction @Movement => m_Wrapper.m_PlayerA_Movement;
+        public InputAction @Movement => m_Wrapper.m_PaddleLeft_Movement;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_PlayerA; }
+        public InputActionMap Get() { return m_Wrapper.m_PaddleLeft; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
         public void Enable() { Get().Enable(); }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -337,9 +358,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
-        /// Implicitly converts an <see ref="PlayerAActions" /> to an <see ref="InputActionMap" /> instance.
+        /// Implicitly converts an <see ref="PaddleLeftActions" /> to an <see ref="InputActionMap" /> instance.
         /// </summary>
-        public static implicit operator InputActionMap(PlayerAActions set) { return set.Get(); }
+        public static implicit operator InputActionMap(PaddleLeftActions set) { return set.Get(); }
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
@@ -347,11 +368,11 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
-        /// <seealso cref="PlayerAActions" />
-        public void AddCallbacks(IPlayerAActions instance)
+        /// <seealso cref="PaddleLeftActions" />
+        public void AddCallbacks(IPaddleLeftActions instance)
         {
-            if (instance == null || m_Wrapper.m_PlayerAActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_PlayerAActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_PaddleLeftActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PaddleLeftActionsCallbackInterfaces.Add(instance);
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
@@ -363,8 +384,8 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         /// <remarks>
         /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
         /// </remarks>
-        /// <seealso cref="PlayerAActions" />
-        private void UnregisterCallbacks(IPlayerAActions instance)
+        /// <seealso cref="PaddleLeftActions" />
+        private void UnregisterCallbacks(IPaddleLeftActions instance)
         {
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
@@ -372,12 +393,12 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         }
 
         /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerAActions.UnregisterCallbacks(IPlayerAActions)" />.
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PaddleLeftActions.UnregisterCallbacks(IPaddleLeftActions)" />.
         /// </summary>
-        /// <seealso cref="PlayerAActions.UnregisterCallbacks(IPlayerAActions)" />
-        public void RemoveCallbacks(IPlayerAActions instance)
+        /// <seealso cref="PaddleLeftActions.UnregisterCallbacks(IPaddleLeftActions)" />
+        public void RemoveCallbacks(IPaddleLeftActions instance)
         {
-            if (m_Wrapper.m_PlayerAActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_PaddleLeftActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
@@ -387,45 +408,45 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
         /// </remarks>
-        /// <seealso cref="PlayerAActions.AddCallbacks(IPlayerAActions)" />
-        /// <seealso cref="PlayerAActions.RemoveCallbacks(IPlayerAActions)" />
-        /// <seealso cref="PlayerAActions.UnregisterCallbacks(IPlayerAActions)" />
-        public void SetCallbacks(IPlayerAActions instance)
+        /// <seealso cref="PaddleLeftActions.AddCallbacks(IPaddleLeftActions)" />
+        /// <seealso cref="PaddleLeftActions.RemoveCallbacks(IPaddleLeftActions)" />
+        /// <seealso cref="PaddleLeftActions.UnregisterCallbacks(IPaddleLeftActions)" />
+        public void SetCallbacks(IPaddleLeftActions instance)
         {
-            foreach (var item in m_Wrapper.m_PlayerAActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_PaddleLeftActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_PlayerAActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_PaddleLeftActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
     /// <summary>
-    /// Provides a new <see cref="PlayerAActions" /> instance referencing this action map.
+    /// Provides a new <see cref="PaddleLeftActions" /> instance referencing this action map.
     /// </summary>
-    public PlayerAActions @PlayerA => new PlayerAActions(this);
+    public PaddleLeftActions @PaddleLeft => new PaddleLeftActions(this);
 
-    // PlayerB
-    private readonly InputActionMap m_PlayerB;
-    private List<IPlayerBActions> m_PlayerBActionsCallbackInterfaces = new List<IPlayerBActions>();
-    private readonly InputAction m_PlayerB_Movement;
+    // PaddleRight
+    private readonly InputActionMap m_PaddleRight;
+    private List<IPaddleRightActions> m_PaddleRightActionsCallbackInterfaces = new List<IPaddleRightActions>();
+    private readonly InputAction m_PaddleRight_Movement;
     /// <summary>
-    /// Provides access to input actions defined in input action map "PlayerB".
+    /// Provides access to input actions defined in input action map "PaddleRight".
     /// </summary>
-    public struct PlayerBActions
+    public struct PaddleRightActions
     {
         private @GameInput m_Wrapper;
 
         /// <summary>
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
-        public PlayerBActions(@GameInput wrapper) { m_Wrapper = wrapper; }
+        public PaddleRightActions(@GameInput wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "PlayerB/Movement".
+        /// Provides access to the underlying input action "PaddleRight/Movement".
         /// </summary>
-        public InputAction @Movement => m_Wrapper.m_PlayerB_Movement;
+        public InputAction @Movement => m_Wrapper.m_PaddleRight_Movement;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_PlayerB; }
+        public InputActionMap Get() { return m_Wrapper.m_PaddleRight; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
         public void Enable() { Get().Enable(); }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -433,9 +454,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
-        /// Implicitly converts an <see ref="PlayerBActions" /> to an <see ref="InputActionMap" /> instance.
+        /// Implicitly converts an <see ref="PaddleRightActions" /> to an <see ref="InputActionMap" /> instance.
         /// </summary>
-        public static implicit operator InputActionMap(PlayerBActions set) { return set.Get(); }
+        public static implicit operator InputActionMap(PaddleRightActions set) { return set.Get(); }
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
@@ -443,11 +464,11 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
-        /// <seealso cref="PlayerBActions" />
-        public void AddCallbacks(IPlayerBActions instance)
+        /// <seealso cref="PaddleRightActions" />
+        public void AddCallbacks(IPaddleRightActions instance)
         {
-            if (instance == null || m_Wrapper.m_PlayerBActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_PlayerBActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_PaddleRightActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PaddleRightActionsCallbackInterfaces.Add(instance);
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
@@ -459,8 +480,8 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         /// <remarks>
         /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
         /// </remarks>
-        /// <seealso cref="PlayerBActions" />
-        private void UnregisterCallbacks(IPlayerBActions instance)
+        /// <seealso cref="PaddleRightActions" />
+        private void UnregisterCallbacks(IPaddleRightActions instance)
         {
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
@@ -468,12 +489,12 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         }
 
         /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerBActions.UnregisterCallbacks(IPlayerBActions)" />.
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PaddleRightActions.UnregisterCallbacks(IPaddleRightActions)" />.
         /// </summary>
-        /// <seealso cref="PlayerBActions.UnregisterCallbacks(IPlayerBActions)" />
-        public void RemoveCallbacks(IPlayerBActions instance)
+        /// <seealso cref="PaddleRightActions.UnregisterCallbacks(IPaddleRightActions)" />
+        public void RemoveCallbacks(IPaddleRightActions instance)
         {
-            if (m_Wrapper.m_PlayerBActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_PaddleRightActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
@@ -483,26 +504,27 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
         /// </remarks>
-        /// <seealso cref="PlayerBActions.AddCallbacks(IPlayerBActions)" />
-        /// <seealso cref="PlayerBActions.RemoveCallbacks(IPlayerBActions)" />
-        /// <seealso cref="PlayerBActions.UnregisterCallbacks(IPlayerBActions)" />
-        public void SetCallbacks(IPlayerBActions instance)
+        /// <seealso cref="PaddleRightActions.AddCallbacks(IPaddleRightActions)" />
+        /// <seealso cref="PaddleRightActions.RemoveCallbacks(IPaddleRightActions)" />
+        /// <seealso cref="PaddleRightActions.UnregisterCallbacks(IPaddleRightActions)" />
+        public void SetCallbacks(IPaddleRightActions instance)
         {
-            foreach (var item in m_Wrapper.m_PlayerBActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_PaddleRightActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_PlayerBActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_PaddleRightActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
     /// <summary>
-    /// Provides a new <see cref="PlayerBActions" /> instance referencing this action map.
+    /// Provides a new <see cref="PaddleRightActions" /> instance referencing this action map.
     /// </summary>
-    public PlayerBActions @PlayerB => new PlayerBActions(this);
+    public PaddleRightActions @PaddleRight => new PaddleRightActions(this);
 
     // UI
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_Pause;
+    private readonly InputAction m_UI_ToMainMenu;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
@@ -518,6 +540,10 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "UI/Pause".
         /// </summary>
         public InputAction @Pause => m_Wrapper.m_UI_Pause;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/ToMainMenu".
+        /// </summary>
+        public InputAction @ToMainMenu => m_Wrapper.m_UI_ToMainMenu;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -547,6 +573,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @ToMainMenu.started += instance.OnToMainMenu;
+            @ToMainMenu.performed += instance.OnToMainMenu;
+            @ToMainMenu.canceled += instance.OnToMainMenu;
         }
 
         /// <summary>
@@ -561,6 +590,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @ToMainMenu.started -= instance.OnToMainMenu;
+            @ToMainMenu.performed -= instance.OnToMainMenu;
+            @ToMainMenu.canceled -= instance.OnToMainMenu;
         }
 
         /// <summary>
@@ -595,11 +627,11 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     /// </summary>
     public UIActions @UI => new UIActions(this);
     /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerA" which allows adding and removing callbacks.
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PaddleLeft" which allows adding and removing callbacks.
     /// </summary>
-    /// <seealso cref="PlayerAActions.AddCallbacks(IPlayerAActions)" />
-    /// <seealso cref="PlayerAActions.RemoveCallbacks(IPlayerAActions)" />
-    public interface IPlayerAActions
+    /// <seealso cref="PaddleLeftActions.AddCallbacks(IPaddleLeftActions)" />
+    /// <seealso cref="PaddleLeftActions.RemoveCallbacks(IPaddleLeftActions)" />
+    public interface IPaddleLeftActions
     {
         /// <summary>
         /// Method invoked when associated input action "Movement" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
@@ -610,11 +642,11 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
     }
     /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerB" which allows adding and removing callbacks.
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PaddleRight" which allows adding and removing callbacks.
     /// </summary>
-    /// <seealso cref="PlayerBActions.AddCallbacks(IPlayerBActions)" />
-    /// <seealso cref="PlayerBActions.RemoveCallbacks(IPlayerBActions)" />
-    public interface IPlayerBActions
+    /// <seealso cref="PaddleRightActions.AddCallbacks(IPaddleRightActions)" />
+    /// <seealso cref="PaddleRightActions.RemoveCallbacks(IPaddleRightActions)" />
+    public interface IPaddleRightActions
     {
         /// <summary>
         /// Method invoked when associated input action "Movement" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
@@ -638,5 +670,12 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPause(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ToMainMenu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnToMainMenu(InputAction.CallbackContext context);
     }
 }

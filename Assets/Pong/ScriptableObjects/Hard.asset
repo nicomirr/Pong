@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d4f1fe26859de459e9ba67f740255a, type: 3}
   m_Name: Hard
   m_EditorClassIdentifier: Assembly-CSharp::Pong.Difficulty.DifficultyConfig
-  _playerSpeed: 13
-  _aiSpeed: 13
+  _playerSpeed: 16
+  _aiSpeed: 16
   _ballStartSpeed: 16
-  _ballExtraSpeed: 0
-  _ballMaxExtraSpeed: 0
+  _ballExtraSpeed: 0.25
+  _ballMaxSpeed: 18

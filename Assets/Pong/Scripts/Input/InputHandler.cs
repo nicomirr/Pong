@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Pong.Input
@@ -7,13 +8,23 @@ namespace Pong.Input
         private IInput _input;
 
         public void Init(IInput input)
-        {
+        {            
             _input = input;
         }
 
         private void Update()
         {
             _input.ChangeDirection();
+        }
+
+        private void OnDisable()
+        {
+            if(_input is IDisposable disposable)
+            {                
+                disposable.Dispose();
+            }
+
+            _input = null;
         }
     }
 }
