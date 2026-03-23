@@ -14,7 +14,8 @@ namespace Pong.Game
 
         [Header("Score")]
         [SerializeField] private int _winScore;
-        [SerializeField] private TextMeshProUGUI _scoreText;
+        [SerializeField] private TextMeshProUGUI _leftScoreText;
+        [SerializeField] private TextMeshProUGUI _rightScoreText;
 
         [Header("Win Text")]
         [SerializeField] private float _winTextDisplayTime;
@@ -43,7 +44,7 @@ namespace Pong.Game
 
         private void Start()
         {
-            UpdateScoreText();
+            UpdateScoreTexts();
         }
 
         private void AddPoint(ScoreZoneSide _side)
@@ -62,13 +63,14 @@ namespace Pong.Game
                     }
             }
 
-            UpdateScoreText();
+            UpdateScoreTexts();
             CheckForWinner();
         }
 
-        private void UpdateScoreText()
+        private void UpdateScoreTexts()
         {
-            _scoreText.text = _leftPaddleScore + " - " + _rightPaddleScore;
+            _leftScoreText.text = _leftPaddleScore < 10 ? "0" + _leftPaddleScore : _leftPaddleScore.ToString();
+            _rightScoreText.text = _rightPaddleScore < 10 ? "0" + _rightPaddleScore : _rightPaddleScore.ToString();
         }
 
         private void CheckForWinner()
