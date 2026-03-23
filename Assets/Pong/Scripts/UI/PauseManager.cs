@@ -7,8 +7,10 @@ namespace Pong.UI
 {
     public class PauseManager : MonoBehaviour, IGameplayController
     {
-        [SerializeField] private GameObject _pauseLayer;
+        
 
+        [SerializeField] private GameObject _pauseLayer;
+               
         private GameInput _gameInput;
         private bool _isGamePaused;
 

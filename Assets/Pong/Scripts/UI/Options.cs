@@ -26,6 +26,8 @@ namespace Pong.UI
             float volume = AudioPlayer.CurrentVolume * 100;
             volume = Mathf.Round(volume);
             _volumeText.text = volume.ToString();
+
+            
         }
     }
 }
