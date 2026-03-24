@@ -47,7 +47,6 @@ Game systems communicate through events instead of direct references.
 ![Game Events](Docs/Images/game_events.png)
 
 **Audio events**
-
 ![Audio Events](Docs/Images/audio_events.png)
 
 ---
@@ -115,7 +114,7 @@ This structure helps keep systems **decoupled, readable, and easy to maintain**.
 
 ## 📸 Media
 
-!(Docs/Images/pong_screenshot.png)
+![Pong](Docs/Images/pong_screenshot.png)
 
 ---
 
