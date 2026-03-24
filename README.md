@@ -7,8 +7,6 @@ The goal was to build a simple game using **professional development practices**
 ---
 
 ## 🔗 Links
-
-* 👉 **Repository**: https://github.com/nicomirr/Pong
 * 👉 **Playable Build (Itch.io)**: https://nicomironoff.itch.io/pong-20-games-challenge
 
 ---
