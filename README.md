@@ -116,10 +116,3 @@ This structure helps keep systems **decoupled, readable, and easy to maintain**.
 
 ![Pong](Docs/Images/pong_screenshot.png)
 
----
-
-## 📫 About Me
-
-I'm focused on **gameplay programming, architecture, and AI systems**.
-
-👉 https://github.com/nicomirr
