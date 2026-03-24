@@ -7,10 +7,7 @@ The goal was to build a simple game using **professional development practices**
 ---
 
 ## 🔗 Links
-
-* 👉 **Repository**: https://github.com/nicomirr/Pong
-* 👉 **Playable Build (Itch.io)**: (ADD LINK HERE)
-* 👉 **Web Build / Demo**: (ADD LINK HERE IF AVAILABLE)
+* 👉 **Playable Build (Itch.io)**: https://nicomironoff.itch.io/pong-20-games-challenge
 
 ---
 
@@ -45,9 +42,11 @@ Game systems communicate through events instead of direct references.
 * Improves scalability and maintainability
 
 **Gameplay events**
+
 ![Game Events](Docs/Images/game_events.png)
 
 **Audio events**
+
 ![Audio Events](Docs/Images/audio_events.png)
 
 ---
@@ -113,22 +112,7 @@ This structure helps keep systems **decoupled, readable, and easy to maintain**.
 
 ---
 
-## 🚀 Future Improvements
-
-* More advanced AI behaviors
-* Better visual feedback and juice
-* Expanded game modes
-
----
-
 ## 📸 Media
 
-(Add gameplay GIFs or screenshots here)
+![Pong](Docs/Images/pong_screenshot.png)
 
----
-
-## 📫 About Me
-
-I'm focused on **gameplay programming, architecture, and AI systems**.
-
-👉 https://github.com/nicomirr
