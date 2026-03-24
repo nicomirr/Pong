@@ -44,9 +44,11 @@ Game systems communicate through events instead of direct references.
 * Improves scalability and maintainability
 
 **Gameplay events**
+
 ![Game Events](Docs/Images/game_events.png)
 
 **Audio events**
+
 ![Audio Events](Docs/Images/audio_events.png)
 
 ---
