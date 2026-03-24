@@ -9,8 +9,7 @@ The goal was to build a simple game using **professional development practices**
 ## 🔗 Links
 
 * 👉 **Repository**: https://github.com/nicomirr/Pong
-* 👉 **Playable Build (Itch.io)**: (ADD LINK HERE)
-* 👉 **Web Build / Demo**: (ADD LINK HERE IF AVAILABLE)
+* 👉 **Playable Build (Itch.io)**: https://nicomironoff.itch.io/pong-20-games-challenge
 
 ---
 
@@ -113,17 +112,9 @@ This structure helps keep systems **decoupled, readable, and easy to maintain**.
 
 ---
 
-## 🚀 Future Improvements
-
-* More advanced AI behaviors
-* Better visual feedback and juice
-* Expanded game modes
-
----
-
 ## 📸 Media
 
-(Add gameplay GIFs or screenshots here)
+(Docs/Images/pong_screenshot.png)
 
 ---
 
